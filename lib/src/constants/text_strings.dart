@@ -11,3 +11,6 @@ const String tRememberMe = "Remember Me ?";
 const String tAlreadyHaveAnAccount = "Already Have An Account ?";
 
 const String tSignInWithGoogle = "Sign-In With Google";
+
+const String tSignUpTitle = "Get on Board!";
+const String tSignUpSubTitle = "Create your account to track your progress";

@@ -6,7 +6,9 @@ import 'package:attendifyx/src/constants/text_styles.dart';
 import 'package:attendifyx/src/constants/text_styles.dart';
 
 import '../../../../constants/colors.dart';
+import 'login_footer_widget.dart';
 import 'login_form_widget.dart';
+import 'login_header_widget.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -22,56 +24,9 @@ class LoginScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Image(
-                    image: const AssetImage(tWelcomeScreenImage),
-                    height: size.height * 0.35),
-                Text(tLoginTitle, style: AppTextStyles.headline1),
-                Text(
-                  tLoginSubTitle,
-                  style: AppTextStyles.bodyText2,
-                ),
-
-                // section 1 - end
-
-                // section 2 [form]
-                const LoginForm(),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    const Text("OR"),
-                    const SizedBox(
-                      height: tFormHeight - 20,
-                    ),
-                    SizedBox(
-                      width: double.infinity,
-                      child: OutlinedButton.icon(
-                        icon: const Image(
-                          image: AssetImage(tGoogleLogoImage),
-                          width: 20.0,
-                        ),
-                        onPressed: () {},
-                        style: ElevatedButton.styleFrom(
-                            shape: const RoundedRectangleBorder(),
-                            side: const BorderSide(color: secondaryColor),
-                            padding: const EdgeInsets.symmetric(
-                                vertical: tButtonHeight)),
-                        label: Text(tSignInWithGoogle),
-                      ),
-                    ),
-                    TextButton(
-                      onPressed: () {},
-                      child: Text.rich(TextSpan(
-                          text: "Don't Have an Account? ",
-                          style: AppTextStyles.bodyText2,
-                          children: const [
-                            TextSpan(
-                              text: tSignUp,
-                              style: TextStyle(color: Colors.blue),
-                            )
-                          ])),
-                    ),
-                  ],
-                )
+                LoginHeaderWidget(size: size),
+                LoginForm(),
+                LoginFooterWidget()
               ],
             ),
           ),
@@ -80,3 +35,6 @@ class LoginScreen extends StatelessWidget {
     );
   }
 }
+
+
+
