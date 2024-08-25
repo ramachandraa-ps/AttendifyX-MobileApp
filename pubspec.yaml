@@ -37,4 +37,5 @@ flutter:
     - assets/logo/logo.png
     - assets/images/welcome_images/
     - assets/logo/
+    - assets/images/signup_image.png
   uses-material-design: true

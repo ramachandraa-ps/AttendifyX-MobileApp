@@ -5,18 +5,14 @@ import '../../../../constants/image_strings.dart';
 import '../../../../constants/sizes.dart';
 import '../../../../constants/text_strings.dart';
 import '../../../../constants/text_styles.dart';
-
-
-
-class LoginFooterWidget extends StatelessWidget {
-  const LoginFooterWidget({
+class SignUpFooterWidget extends StatelessWidget {
+  const SignUpFooterWidget({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         const Text("OR"),
         const SizedBox(
@@ -25,11 +21,11 @@ class LoginFooterWidget extends StatelessWidget {
         SizedBox(
           width: double.infinity,
           child: OutlinedButton.icon(
-            onPressed: () {},
             icon: const Image(
               image: AssetImage(tGoogleLogoImage),
               width: 20.0,
             ),
+            onPressed: () {},
             style: ElevatedButton.styleFrom(
                 shape: const RoundedRectangleBorder(),
                 side: const BorderSide(color: secondaryColor),
@@ -41,11 +37,11 @@ class LoginFooterWidget extends StatelessWidget {
         TextButton(
           onPressed: () {},
           child: Text.rich(TextSpan(
-              text: "Don't Have an Account? ",
+              text: "Already Have an  Account?  ",
               style: AppTextStyles.bodyText2,
               children: const [
                 TextSpan(
-                  text: tSignUp,
+                  text: tLogin,
                   style: TextStyle(color: Colors.blue),
                 )
               ])),

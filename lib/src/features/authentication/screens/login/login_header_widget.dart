@@ -13,17 +13,19 @@ class LoginHeaderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Image(
-            image: const AssetImage(tWelcomeScreenImage),
-            height: size.height * 0.35),
-        Text(tLoginTitle, style: AppTextStyles.headline1),
-        Text(
-          tLoginSubTitle,
-          style: AppTextStyles.bodyText2,
-        ),
-      ],
+    return SafeArea(
+      child: Column(
+        children: [
+          Image(
+              image: const AssetImage(tSignupImage),
+              height: size.height * 0.35),
+          Text(tLoginTitle, style: AppTextStyles.headline1),
+          Text(
+            tLoginSubTitle,
+            style: AppTextStyles.bodyText2,
+          ),
+        ],
+      ),
     );
   }
 }

@@ -3,6 +3,7 @@ import 'package:attendifyx/src/constants/sizes.dart';
 import 'package:attendifyx/src/constants/text_strings.dart';
 import 'package:attendifyx/src/constants/text_styles.dart';
 import 'package:attendifyx/src/features/authentication/screens/login/login_screen.dart';
+import 'package:attendifyx/src/features/authentication/screens/signup/signup_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -52,7 +53,7 @@ class WelcomeScreen extends StatelessWidget {
                     const SizedBox(width: 10.0),
                     Expanded(
                         child: ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () => Get.to(() => const SignUpScreen()),
                             style: ElevatedButton.styleFrom(
                                 shape: const RoundedRectangleBorder(),
                                 backgroundColor: secondaryColor,
