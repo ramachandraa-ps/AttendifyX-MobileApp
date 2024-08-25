@@ -2,7 +2,9 @@ import 'package:attendifyx/src/constants/image_strings.dart';
 import 'package:attendifyx/src/constants/sizes.dart';
 import 'package:attendifyx/src/constants/text_strings.dart';
 import 'package:attendifyx/src/constants/text_styles.dart';
+import 'package:attendifyx/src/features/authentication/screens/login/login_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../../constants/colors.dart';
 
@@ -17,51 +19,52 @@ class WelcomeScreen extends StatelessWidget {
     return Scaffold(
         backgroundColor: primaryColor,
         body: Container(
-      padding: EdgeInsets.all(tDefaultSize),
-      child:
-          Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
-        Image(
-          image: AssetImage(tWelcomeScreenImage),
-          height: height * 0.6,
-        ),
-        Column(
-          children: [
-            Text(tWelcomeTitle, style: AppTextStyles.headline1),
-            Text(
-              tWelcomeSubTitle,
-              style: AppTextStyles.bodyText2,
-              textAlign: TextAlign.center,
-            ),
-          ],
-        ),
-        Row(
-          children: [
-            Expanded(
-                child: OutlinedButton(
-                    onPressed: () {},
-                    style: OutlinedButton.styleFrom(
-                        shape: RoundedRectangleBorder(),
-                        foregroundColor: secondaryColor,
-                        side: BorderSide(color: secondaryColor),
-                        padding: EdgeInsets.symmetric(vertical: tButtonHeight)),
-                    child: Text(tLogin.toUpperCase()))),
-            SizedBox(
-              width: 10.0,
-            ),
-            Expanded(
-                child: ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(),
-                        backgroundColor: secondaryColor,
-                        foregroundColor: Colors.white,
-                        side: BorderSide(color: secondaryColor),
-                        padding: EdgeInsets.symmetric(vertical: tButtonHeight)),
-                    child: Text(tSignUp.toUpperCase()))),
-          ],
-        )
-      ]), // Column
-    ) // Container
+          padding: const EdgeInsets.all(tDefaultSize),
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Image(
+                  image: const AssetImage(tWelcomeScreenImage),
+                  height: height * 0.6,
+                ),
+                const Column(
+                  children: [
+                    Text(tWelcomeTitle, style: AppTextStyles.headline1),
+                    Text(
+                      tWelcomeSubTitle,
+                      style: AppTextStyles.bodyText2,
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    Expanded(
+                        child: OutlinedButton(
+                            onPressed: () => Get.to(() => const LoginScreen()),
+                            style: OutlinedButton.styleFrom(
+                                shape: const RoundedRectangleBorder(),
+                                foregroundColor: secondaryColor,
+                                side: const BorderSide(color: secondaryColor),
+                                padding: const EdgeInsets.symmetric(
+                                    vertical: tButtonHeight)),
+                            child: Text(tLogin.toUpperCase()))),
+                    const SizedBox(width: 10.0),
+                    Expanded(
+                        child: ElevatedButton(
+                            onPressed: () {},
+                            style: ElevatedButton.styleFrom(
+                                shape: const RoundedRectangleBorder(),
+                                backgroundColor: secondaryColor,
+                                foregroundColor: Colors.white,
+                                side: const BorderSide(color: secondaryColor),
+                                padding: const EdgeInsets.symmetric(
+                                    vertical: tButtonHeight)),
+                            child: Text(tSignUp.toUpperCase()))),
+                  ],
+                )
+              ]), // Column
+        ) // Container
         ); // Scaffold
   }
 }

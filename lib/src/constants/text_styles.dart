@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class AppTextStyles {
   static const TextStyle headline1 = TextStyle(
-    fontSize: 28.0,
+    fontSize: 28.0  ,
     fontWeight: FontWeight.bold,
     color: Colors.black, // Customize color as needed
     fontFamily: 'Times New Roman', // Use custom font
@@ -19,13 +19,13 @@ class AppTextStyles {
     fontSize: 16.0,
     fontWeight: FontWeight.normal,
     color: Colors.black87,
-    fontFamily: 'Castoro', // Use custom font
+    fontFamily: 'New Amsterdam', // Use custom font
   );
 
   static const TextStyle bodyText2 = TextStyle(
     fontSize: 14.0,
     fontWeight: FontWeight.normal,
     color: Colors.black87,
-    fontFamily: 'Castoro',
+    fontFamily: 'New Amsterdam',
   );
 }
