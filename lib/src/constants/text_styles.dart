@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AppTextStyles {
   static const TextStyle headline1 = TextStyle(
@@ -8,11 +9,10 @@ class AppTextStyles {
     fontFamily: 'Times New Roman', // Use custom font
   );
 
-  static const TextStyle headline2 = TextStyle(
+  static final TextStyle headline2 = GoogleFonts.poppins(
     fontSize: 28.0,
     fontWeight: FontWeight.w600,
-    color: Colors.black54,
-    fontFamily: 'Times New Roman',
+    color: Colors.black
   );
 
   static const TextStyle bodyText1 = TextStyle(

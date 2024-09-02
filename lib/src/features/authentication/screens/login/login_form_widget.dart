@@ -1,4 +1,7 @@
+import 'package:attendifyx/src/features/core/screens/dashboard/dashboard.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
 import '../../../../constants/colors.dart';
 import '../../../../constants/sizes.dart';
@@ -44,7 +47,7 @@ class LoginForm extends StatelessWidget {
               SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () => Get.to(() => const Dashboard()),
                       style: ElevatedButton.styleFrom(
                           shape: const RoundedRectangleBorder(),
                           backgroundColor: secondaryColor,

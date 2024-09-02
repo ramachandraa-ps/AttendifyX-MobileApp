@@ -1,3 +1,5 @@
+const String tAppName = "AttendifyX";
+
 const String tLogin = "Login";
 const String tSignUp = "Signup";
 
@@ -14,3 +16,4 @@ const String tSignInWithGoogle = "Sign-In With Google";
 
 const String tSignUpTitle = "Get on Board!";
 const String tSignUpSubTitle = "Create your account to track your progress";
+
