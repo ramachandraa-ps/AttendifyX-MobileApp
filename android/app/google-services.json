@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "959952736366",
+    "firebase_url": "https://attendifyx-202400-default-rtdb.firebaseio.com",
+    "project_id": "attendifyx-202400",
+    "storage_bucket": "attendifyx-202400.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:959952736366:android:e819604c497f27bd77967f",
+        "android_client_info": {
+          "package_name": "com.innovatorz.attendifyx"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBeH_ro9q5fM8CqRmHGjFQiesz58I_ajic"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

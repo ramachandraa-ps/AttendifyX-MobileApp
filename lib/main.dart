@@ -1,9 +1,17 @@
+import 'package:attendifyx/firebase_options.dart';
+import 'package:attendifyx/src/repository/authentication_repository/authentication_repository.dart';
 import 'package:attendifyx/src/utils/theme/theme.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'src/features/authentication/screens/welcome/welcome_screen.dart';
 
-void main() => runApp(const App());
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform)
+      .then((value) => Get.put(AuthenticationRepository()));
+  runApp(const App());
+}
 
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
@@ -19,5 +27,3 @@ class App extends StatelessWidget {
     );
   }
 }
-
-
