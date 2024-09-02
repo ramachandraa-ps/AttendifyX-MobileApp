@@ -1,15 +1,19 @@
 import 'package:attendifyx/firebase_options.dart';
-import 'package:attendifyx/src/repository/authentication_repository/authentication_repository.dart';
+import 'package:attendifyx/src/features/authentication/authentication_repository/authentication_repository.dart';
+import 'package:attendifyx/src/features/authentication/controllers/auth_controller.dart';
 import 'package:attendifyx/src/utils/theme/theme.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'src/features/authentication/screens/welcome/welcome_screen.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform)
-      .then((value) => Get.put(AuthenticationRepository()));
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
+  // Register AuthenticationRepository with GetX
+  Get.put(AuthController());
+
   runApp(const App());
 }
 

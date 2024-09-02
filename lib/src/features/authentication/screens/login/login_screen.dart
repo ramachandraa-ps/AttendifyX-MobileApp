@@ -1,14 +1,7 @@
-import 'package:attendifyx/src/constants/image_strings.dart';
-import 'package:attendifyx/src/constants/sizes.dart';
-import 'package:attendifyx/src/constants/text_strings.dart';
 import 'package:flutter/material.dart';
-import 'package:attendifyx/src/constants/text_styles.dart';
-import 'package:attendifyx/src/constants/text_styles.dart';
-
-import '../../../../constants/colors.dart';
-import 'login_footer_widget.dart';
-import 'login_form_widget.dart';
 import 'login_header_widget.dart';
+import 'login_form_widget.dart';
+import 'login_footer_widget.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -19,8 +12,8 @@ class LoginScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
-          child: Container(
-            padding: const EdgeInsets.all(tDefaultSize),
+          child: Padding(
+            padding: const EdgeInsets.all(16.0), // Adjusted padding
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -35,6 +28,3 @@ class LoginScreen extends StatelessWidget {
     );
   }
 }
-
-
-

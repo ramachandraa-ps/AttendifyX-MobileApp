@@ -1,4 +1,3 @@
-import 'package:attendifyx/src/features/authentication/controllers/signup_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';import 'package:get/get_core/src/get_main.dart';
 
@@ -12,11 +11,8 @@ class SignUpFormWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(SignUpController());
-    final _formKey = GlobalKey<FormState>();
     return Container(
       child: Form(
-        key: _formKey,
           child: Container(
             padding:
             EdgeInsets.symmetric(vertical: tFormHeight - 10),
@@ -24,7 +20,6 @@ class SignUpFormWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 TextFormField(
-                  controller: controller.fullName,
                   decoration: InputDecoration(
                       prefixIcon: Icon(
                           Icons.person_outline_outlined),
@@ -34,7 +29,6 @@ class SignUpFormWidget extends StatelessWidget {
                 ),
                 const SizedBox(height: tFormHeight - 20),
                 TextFormField(
-                  controller: controller.email,
                   decoration: InputDecoration(
                       prefixIcon: Icon(Icons.email_outlined),
                       labelText: "Email",
@@ -44,7 +38,6 @@ class SignUpFormWidget extends StatelessWidget {
                 ),
                 const SizedBox(height: tFormHeight - 20),
                 TextFormField(
-                  controller: controller.phoneNo,
                   decoration: InputDecoration(
                       prefixIcon: Icon(Icons.numbers),
                       labelText: "Phone Number",
@@ -54,7 +47,6 @@ class SignUpFormWidget extends StatelessWidget {
                 ),
                 const SizedBox(height: tFormHeight - 20),
                 TextFormField(
-                  controller: controller.password,
                   decoration: InputDecoration(
                     prefixIcon: Icon(Icons.fingerprint_rounded),
                     labelText: "Password",
@@ -69,11 +61,7 @@ class SignUpFormWidget extends StatelessWidget {
                 SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
-                        onPressed: () {
-                          if(_formKey.currentState!.validate()){
-                            SignUpController.instance.registerUser(controller.email.text.trim(), controller.password.text.trim());
-                          }
-                        },
+                        onPressed: () {},
                         style: ElevatedButton.styleFrom(
                             shape: const RoundedRectangleBorder(),
                             backgroundColor: secondaryColor,
