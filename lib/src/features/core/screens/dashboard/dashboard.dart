@@ -1,9 +1,8 @@
-
 import 'package:attendifyx/src/constants/image_strings.dart';
 import 'package:attendifyx/src/constants/sizes.dart';
 import 'package:attendifyx/src/constants/text_styles.dart';
-
 import 'package:flutter/material.dart';
+import 'package:attendifyx/src/features/manual_checkin_checkout.dart';  // Import the manual check-in/out page
 
 import '../../../../constants/text_strings.dart';
 
@@ -99,9 +98,11 @@ class _DashboardState extends State<Dashboard> with SingleTickerProviderStateMix
                 SizedBox(height: 20),
                 _buildProgressSection('Geo-location Based Attendance Tracking', 'In Progress', Colors.blue),
                 SizedBox(height: 20),
-                _buildProgressSection('Offsite Attendance', 'Completed', Colors.green),
-                SizedBox(height: 20),
                 _buildProgressSection('Payroll Management', 'Pending', Colors.orange),
+
+                // Manual Check-In/Check-Out Section
+                SizedBox(height: 20),
+                _buildManualCheckInCheckOutSection(),
 
                 // Additional Sections (if needed)
                 SizedBox(height: 20),
@@ -189,6 +190,36 @@ class _DashboardState extends State<Dashboard> with SingleTickerProviderStateMix
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+
+  // Widget for Manual Check-In/Check-Out Section
+  Widget _buildManualCheckInCheckOutSection() {
+    return Card(
+      elevation: 5,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(15),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: ListTile(
+          leading: Icon(
+            Icons.access_time, // Replace with appropriate icons
+            color: Colors.blue,
+            size: 40,
+          ),
+          title: Text(
+            'Manual Check-In/Check-Out',
+            style: AppTextStyles.headline2,
+          ),
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => ManualCheckInCheckOut()), // Navigate to the check-in/out page
+            );
+          },
         ),
       ),
     );
