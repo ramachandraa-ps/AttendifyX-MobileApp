@@ -24,8 +24,9 @@ class _ManualCheckInCheckOutState extends State<ManualCheckInCheckOut> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Manual Check-In/Check-Out'),
+        title: Text('Manual Check-In/Check-Out', style: TextStyle(fontFamily: 'Roboto', fontWeight: FontWeight.bold, fontSize: 20)),
         centerTitle: true,
+        elevation: 0,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -42,40 +43,62 @@ class _ManualCheckInCheckOutState extends State<ManualCheckInCheckOut> {
                       ? null
                       : FileImage(File(_imageFile!.path)),
                   child: _imageFile == null
-                      ? Icon(Icons.camera_alt, size: 40)
+                      ? Icon(Icons.camera_alt, size: 40, color: Colors.black54)
                       : null,
                 ),
               ),
             ),
             SizedBox(height: 20),
-            Text('Location: $_location', style: TextStyle(fontSize: 16)),
+            Text('Location:', style: TextStyle(fontFamily: 'Roboto', fontSize: 18, fontWeight: FontWeight.bold)),
+            Text(_location, style: TextStyle(fontFamily: 'Roboto', fontSize: 18, color: Colors.grey[700])),
             SizedBox(height: 10),
             ElevatedButton(
               onPressed: _getCurrentLocation,
-              child: Text('Fetch Location'),
+              style: ElevatedButton.styleFrom(
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+              ),
+              child: Text('Fetch Location', style: TextStyle(fontFamily: 'Roboto', fontSize: 18)),
             ),
             SizedBox(height: 20),
             if (_checkInTime.isEmpty) ...[
               ElevatedButton(
-                onPressed: _checkIn,
-                child: Text('Check-In'),
+                onPressed: _imageFile == null ? null : _checkIn,
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                ),
+                child: Text('Check-In', style: TextStyle(fontFamily: 'Roboto', fontSize: 18)),
               ),
             ] else if (_checkOutTime.isEmpty) ...[
               ElevatedButton(
                 onPressed: _checkOut,
-                child: Text('Check-Out'),
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                ),
+                child: Text('Check-Out', style: TextStyle(fontFamily: 'Roboto', fontSize: 18)),
               ),
             ],
             SizedBox(height: 20),
             if (_checkInTime.isNotEmpty) ...[
-              Text('Checked In At: $_checkInTime'),
+              Text('Checked In At:', style: TextStyle(fontFamily: 'Roboto', fontSize: 18, fontWeight: FontWeight.bold)),
+              Text(_checkInTime, style: TextStyle(fontFamily: 'Roboto', fontSize: 18, color: Colors.grey[700])),
               SizedBox(height: 10),
-              Text('Duration: $_duration'),
+              Text('Duration:', style: TextStyle(fontFamily: 'Roboto', fontSize: 18, fontWeight: FontWeight.bold)),
+              Text(_duration, style: TextStyle(fontFamily: 'Roboto', fontSize: 18, color: Colors.grey[700])),
             ],
             if (_checkOutTime.isNotEmpty) ...[
-              Text('Checked Out At: $_checkOutTime'),
+              Text('Checked Out At:', style: TextStyle(fontFamily: 'Roboto', fontSize: 18, fontWeight: FontWeight.bold)),
+              Text(_checkOutTime, style: TextStyle(fontFamily: 'Roboto', fontSize: 18, color: Colors.grey[700])),
               SizedBox(height: 10),
-              Text('Location on Checkout: $_location'),
+              Text('Location on Checkout:', style: TextStyle(fontFamily: 'Roboto', fontSize: 18, fontWeight: FontWeight.bold)),
+              Text(_location, style: TextStyle(fontFamily: 'Roboto', fontSize: 18, color: Colors.grey[700])),
+              SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: _resetCheckInCheckOut,
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                ),
+                child: Text('Check-In Again', style: TextStyle(fontFamily: 'Roboto', fontSize: 18)),
+              ),
             ],
           ],
         ),
@@ -102,7 +125,7 @@ class _ManualCheckInCheckOutState extends State<ManualCheckInCheckOut> {
       Placemark place = placemarks[0];
       setState(() {
         _location =
-        '${place.street}, ${place.locality}, ${place.postalCode}, ${place.country}';
+        '${place.street ?? ''}, ${place.locality ?? ''}, ${place.postalCode ?? ''}, ${place.country ?? ''}';
       });
     } catch (e) {
       print(e);
@@ -114,11 +137,17 @@ class _ManualCheckInCheckOutState extends State<ManualCheckInCheckOut> {
 
   // Method to handle Check-In
   void _checkIn() {
-    setState(() {
-      _checkInDateTime = DateTime.now();
-      _checkInTime = _formatDateTime(_checkInDateTime!);
-      _startTimer();
-    });
+    if (_imageFile != null) {
+      setState(() {
+        _checkInDateTime = DateTime.now();
+        _checkInTime = _formatDateTime(_checkInDateTime!);
+        _startTimer();
+      });
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Please take a picture for check-in.')),
+      );
+    }
   }
 
   // Method to handle Check-Out
@@ -157,5 +186,17 @@ class _ManualCheckInCheckOutState extends State<ManualCheckInCheckOut> {
     final minutes = duration.inMinutes % 60;
     final seconds = duration.inSeconds % 60;
     return '${hours.toString().padLeft(2, '0')}:${minutes.toString().padLeft(2, '0')}:${seconds.toString().padLeft(2, '0')}';
+  }
+
+  // Method to reset Check-In/Check-Out
+  void _resetCheckInCheckOut() {
+    setState(() {
+      _checkInTime = '';
+      _checkOutTime = '';
+      _duration = '00:00:00';
+      _checkInDateTime = null;
+      _imageFile = null;
+      _location = 'Unknown location';
+    });
   }
 }
