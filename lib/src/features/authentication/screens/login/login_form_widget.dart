@@ -1,4 +1,5 @@
 import 'package:attendifyx/src/constants/colors.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -7,7 +8,8 @@ import '../../../core/screens/dashboard/dashboard.dart';
 import '../../controllers/auth_controller.dart'; // Adjust import based on your file structure
 
 class LoginForm extends StatelessWidget {
-  final AuthController authController = Get.find(); // Ensure controller is correctly initialized
+  final AuthController authController = Get
+      .find(); // Ensure controller is correctly initialized
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +61,8 @@ class LoginForm extends StatelessWidget {
                 onPressed: () async {
                   // Authentication logic here
                   final email = authController.emailController.text.trim();
-                  final password = authController.passwordController.text.trim();
+                  final password = authController.passwordController.text
+                      .trim();
                   try {
                     await authController.login(email, password);
                     // Navigate to the dashboard or handle successful login
